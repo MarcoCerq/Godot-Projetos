@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-Projeto"
+run/main_scene="res://Game/Player/PlayerScene.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
