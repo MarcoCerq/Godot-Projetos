@@ -12,10 +12,10 @@ extents = Vector2( 32, 32 )
 script = ExtResource( 4 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 512, 288 )
+position = Vector2( 528.837, 273.408 )
 
-[node name="Enemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 43.0869, -37.6429 )
+[node name="Enemy" parent="Player" instance=ExtResource( 3 )]
+position = Vector2( -280.916, -185.128 )
 
 [node name="Walls" type="Node2D" parent="."]
 
