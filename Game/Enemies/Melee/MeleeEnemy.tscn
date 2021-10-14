@@ -8,17 +8,17 @@ extents = Vector2( 31.757, 30.9576 )
 
 [node name="Enemy" type="Node2D"]
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="EnemyKinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
 
-[node name="RayCast2D" type="RayCast2D" parent="KinematicBody2D"]
+[node name="RayCast2D" type="RayCast2D" parent="EnemyKinematicBody2D"]
 position = Vector2( 30, 0 )
 enabled = true
 cast_to = Vector2( 0, 35 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKinematicBody2D"]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="KinematicBody2D"]
+[node name="Sprite" type="Sprite" parent="EnemyKinematicBody2D"]
 modulate = Color( 1, 0.478431, 0.317647, 1 )
 texture = ExtResource( 1 )
