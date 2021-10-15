@@ -10,6 +10,9 @@ extents = Vector2( 31.757, 30.9576 )
 
 [node name="EnemyKinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="RayCast2D" type="RayCast2D" parent="EnemyKinematicBody2D"]
 position = Vector2( 30, 0 )

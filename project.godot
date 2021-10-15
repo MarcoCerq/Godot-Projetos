@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Godot-Projeto"
-run/main_scene="res://Game/Player/PlayerScene.tscn"
+run/main_scene="res://Game/UI/MainMenu.tscn"
 config/icon="res://icon.png"
 
 [display]
@@ -43,4 +43,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
