@@ -4,7 +4,7 @@
 [ext_resource path="res://Game/Enemies/Melee/KinematicBody2D.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 31.757, 30.9576 )
+extents = Vector2( 24, 24 )
 
 [node name="Enemy" type="Node2D"]
 
@@ -15,13 +15,16 @@ __meta__ = {
 }
 
 [node name="RayCast2D" type="RayCast2D" parent="EnemyKinematicBody2D"]
-position = Vector2( 30, 0 )
+position = Vector2( 22, -8 )
 enabled = true
 cast_to = Vector2( 0, 35 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyKinematicBody2D"]
+position = Vector2( -1.90735e-06, 0 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="EnemyKinematicBody2D"]
 modulate = Color( 1, 0.478431, 0.317647, 1 )
+position = Vector2( -9.53674e-07, -9.53674e-07 )
+scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 1 )

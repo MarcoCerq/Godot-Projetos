@@ -7,6 +7,8 @@ const ACCELERATION = 40
 const MAX_SPEED = 300
 const JUMP_HEIGHT = -700
 
+var zoomStrength = 1
+
 var motion = Vector2()
 
 func _physics_process(delta):
@@ -30,6 +32,14 @@ func _physics_process(delta):
 		$Sprite.play("Idle")
 		friction = true
 		motion.x = lerp(motion.x, 0, 0.30)
+		
+	if Input.is_action_just_released("zoom_in"):
+		$Camera2D.zoom.x -= zoomStrength
+		$Camera2D.zoom.y -= zoomStrength
+		
+	if Input.is_action_just_released("zoom_out"):
+		$Camera2D.zoom.x += zoomStrength
+		$Camera2D.zoom.y += zoomStrength
 	
 	# Checks if player is on floor, if he is and presses UP Arrow, he'll jump
 	# If player's not on floot, play fall animation

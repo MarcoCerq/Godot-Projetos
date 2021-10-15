@@ -1,5 +1,8 @@
 extends Node2D
 
+export(String, FILE, "*.tscn") var world_scene
+export(String, FILE, "*.tscn") var reset_scene
+
 var segments = [
 	preload("res://Game/LevelDesign/Segments/Segment1.tscn"),
 	preload("res://Game/LevelDesign/Segments/Segment2.tscn"),
@@ -11,9 +14,8 @@ var distanceBetweenSegments = 832
 
 var lastCreatedSegment
 var currentSegmentPosition = 0
-var segmentAmount = 0
 
-var hasCreatedNewSegment = false
+var hasCreatedNewSegment = true
 
 var speed = 200
 
@@ -37,29 +39,32 @@ func _ready():
 				#area.queue_free
 
 func _physics_process(delta):
-	print($Player/PlayerKinematicBody2D.position.x)
-	print(currentSegmentPosition)
-	print(positionToDelete())
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene(world_scene)
+	if Input.is_action_just_pressed("ui_reset"):
+		get_tree().change_scene(reset_scene)
 	for area in $Areas.get_children():
-		if $Player/PlayerKinematicBody2D.position.x > positionToSpawn() && !hasCreatedNewSegment:
+		if $Player/PlayerKinematicBody2D.position.x >= positionToSpawn() && not hasCreatedNewSegment:
 			hasCreatedNewSegment = true
 			spawn_instance(area.position.x + currentSegmentPosition, 0)
-	#for area in $Areas.get_children():
-		#if $Player/PlayerKinematicBody2D.position.x > positionToDelete() && segmentAmount > 1 && area != lastCreatedSegment:
-		#	area.queue_free()
-		#	print("deleted")
+			delete_instance()
 
 func spawn_instance(x, y):
-	hasCreatedNewSegment = false
-	var instance = segments[randi() % len(segments)].instance()
-	instance.position = Vector2(x, y)
-	$Areas.add_child(instance)
-	lastCreatedSegment = instance
-	currentSegmentPosition += distanceBetweenSegments
-	segmentAmount += 1
+	if hasCreatedNewSegment:
+		hasCreatedNewSegment = false
+		var instance = segments[randi() % len(segments)].instance()
+		instance.position = Vector2(x, y)
+		$Areas.add_child(instance)
+		lastCreatedSegment = instance
+		currentSegmentPosition += distanceBetweenSegments
+		
+func delete_instance():
+	for area in $Areas.get_children():
+		if area.position.x <= positionToDelete() && area.get_node("VisibilityNotifier2D").is_on_screen():
+			area.queue_free()
 	
 func positionToSpawn():
 	return currentSegmentPosition - distanceBetweenSegments + (distanceBetweenSegments / 2)
 	
 func positionToDelete():
-	return currentSegmentPosition - distanceBetweenSegments
+	return currentSegmentPosition - distanceBetweenSegments - (distanceBetweenSegments * 2)

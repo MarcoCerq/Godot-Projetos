@@ -5,9 +5,11 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 4 )
+world_scene = "res://Game/UI/MainMenu.tscn"
+reset_scene = "res://Game/LevelDesign/World.tscn"
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 64, 192 )
+position = Vector2( 32, 288 )
 world_scene = "res://Game/UI/MainMenu.tscn"
 
 [node name="Areas" type="Node2D" parent="."]

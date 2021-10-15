@@ -10,3 +10,6 @@ func _physics_process(delta):
 	for body in bodies:
 		if body.name == "EnemyKinematicBody2D":
 			get_tree().change_scene(world_scene)
+	
+	#if Input.is_action_just_pressed("ui_cancel"):
+		#get_tree().change_scene(world_scene)
