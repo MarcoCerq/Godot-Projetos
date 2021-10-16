@@ -31,6 +31,8 @@ var hasCreatedNewSegment = true
 
 var speed = 200
 
+var points = 0
+
 func _ready():
 	randomize()
 	spawn_instance(0, 0)
@@ -51,6 +53,10 @@ func _ready():
 				#area.queue_free
 
 func _physics_process(delta):
+	
+	points += delta * 2
+	print (points)
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		get_tree().change_scene(world_scene)
 	if Input.is_action_just_pressed("ui_reset"):
