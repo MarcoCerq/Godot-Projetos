@@ -6,8 +6,20 @@ export(String, FILE, "*.tscn") var reset_scene
 var segments = [
 	preload("res://Game/LevelDesign/Segments/Segment1.tscn"),
 	preload("res://Game/LevelDesign/Segments/Segment2.tscn"),
-	preload("res://Game/LevelDesign/Segments/Segment3.tscn")
-	#preload("res://Game/LevelDesign/Segments/Segment4.tscn")
+	preload("res://Game/LevelDesign/Segments/Segment3.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment4.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment5.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment6.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment7.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment8.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment9.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment10.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment11.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment12.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment13.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment14.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment15.tscn"),
+	preload("res://Game/LevelDesign/Segments/Segment16.tscn"),
 ]
 
 var distanceBetweenSegments = 832

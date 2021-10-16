@@ -8,6 +8,7 @@ const MAX_SPEED = 300
 const JUMP_HEIGHT = -700
 
 var zoomStrength = 1
+var jumpTimes = 0
 
 var motion = Vector2()
 
@@ -21,14 +22,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 		if $Camera2D.offset.x > 32:
-			$Camera2D.offset.x -= 5
+			$Camera2D.offset.x -= 300 * delta
 		$Sprite.flip_h = false
 		$Sprite.play("Run")
 	# Else if the player goes left, moves the character left and flips it's sprite left
 	elif Input.is_action_pressed("ui_left"):
 		#motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 		if $Camera2D.offset.x < 301:
-			$Camera2D.offset.x += 5
+			$Camera2D.offset.x += 300 * delta
 			if not $Camera2D.offset.x > 300:
 				motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 				$Sprite.flip_h = true
@@ -55,19 +56,25 @@ func _physics_process(delta):
 			#$Camera2D.offset.y = -64
 	
 	# Checks if player is on floor, if he is and presses UP Arrow, he'll jump
-	# If player's not on floot, play fall animation
+	# If player's not on floor, play fall animation	
 	if is_on_floor():
+		if jumpTimes > 0:
+			jumpTimes = 0
+	
+	if motion.y < 0:
+		$Sprite.play("Jump")
+	elif motion.y > 50:
+		$Sprite.play("Fall")
+		
+	if friction == true:
+		motion.x = lerp(motion.x, 0, 0.1)
+			
+	if jumpTimes < 2:
 		if Input.is_action_just_pressed("ui_up"):
 			motion.y = JUMP_HEIGHT
+			jumpTimes += 1
 		if friction == true:
 			motion.x = lerp(motion.x, 0, 0.30)
-	else:
-		if motion.y < 0:
-			$Sprite.play("Jump")
-		else:
-			$Sprite.play("Fall")
-		if friction == true:
-			motion.x = lerp(motion.x, 0, 0.1)
 	
 	# Sets player's current movent/jump speed
 	motion = move_and_slide(motion, UP)
