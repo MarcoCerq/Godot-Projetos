@@ -64,7 +64,7 @@ func delete_instance():
 			area.queue_free()
 	
 func positionToSpawn():
-	return currentSegmentPosition - distanceBetweenSegments + (distanceBetweenSegments / 2)
+	return currentSegmentPosition - distanceBetweenSegments - 100 + (distanceBetweenSegments / 2)
 	
 func positionToDelete():
-	return currentSegmentPosition - distanceBetweenSegments - (distanceBetweenSegments * 2)
+	return currentSegmentPosition - distanceBetweenSegments + 100 - (distanceBetweenSegments * 2)

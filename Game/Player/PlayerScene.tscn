@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Sprites/Player/Run3.png" type="Texture" id=1]
-[ext_resource path="res://Game/Player/KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Game/Player/PlayerController.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/Player/Run0.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Player/Run7.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Player/Run4.png" type="Texture" id=5]
@@ -14,8 +14,8 @@
 [ext_resource path="res://Sprites/Sky/Sky.png" type="Texture" id=12]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 15.0
-height = 29.0
+radius = 16.0
+height = 28.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -49,9 +49,6 @@ script = ExtResource( 11 )
 
 [node name="PlayerKinematicBody2D" type="KinematicBody2D" parent="."]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Area2D" type="Area2D" parent="PlayerKinematicBody2D"]
 
@@ -72,13 +69,16 @@ shape = SubResource( 3 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="PlayerKinematicBody2D/ParallaxBackground"]
 motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 640, 640 )
+motion_mirroring = Vector2( 704, 704 )
 
 [node name="Sky" type="Sprite" parent="PlayerKinematicBody2D/ParallaxBackground/ParallaxLayer"]
+scale = Vector2( 1.1, 1.1 )
 texture = ExtResource( 12 )
 centered = false
 
 [node name="Camera2D" type="Camera2D" parent="PlayerKinematicBody2D"]
+position = Vector2( 32, -64 )
 current = true
+zoom = Vector2( 1.1, 1.1 )
 smoothing_enabled = true
 smoothing_speed = 15.0
