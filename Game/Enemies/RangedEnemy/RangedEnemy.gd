@@ -4,7 +4,7 @@ const bullet = preload("res://Game/Enemies/RangedEnemy/Bullet.tscn")
 
 export(String) var dir = ""
 
-var reload = 1.2
+export var reload = 1.2
 var timer = false
 
 func _ready():

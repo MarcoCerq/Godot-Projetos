@@ -19,3 +19,8 @@ disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
+
+[node name="lifetime" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="lifetime" to="." method="_on_lifetime_timeout"]

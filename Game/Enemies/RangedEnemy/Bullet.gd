@@ -4,6 +4,7 @@ var speed = 250
 var motion = Vector2()
 
 func _ready():
+	$lifetime.start()
 	global_position = get_parent().global_position
 	
 
@@ -17,3 +18,7 @@ func start(dir):
 
 func _physics_process(delta):
 	motion = move_and_slide(motion)
+
+
+func _on_lifetime_timeout():
+	queue_free()
