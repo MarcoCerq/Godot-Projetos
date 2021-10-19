@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Game/LevelDesign/Tilemaps/DirtAutoTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Enemies/Melee/MeleeEnemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Game/Items/Coin.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 832, 32 )
@@ -23,3 +24,12 @@ __meta__ = {
 
 [node name="BoxCollision2D" type="CollisionShape2D" parent="YouDied"]
 shape = SubResource( 1 )
+
+[node name="CoinArea2D" parent="." instance=ExtResource( 3 )]
+position = Vector2( -98, 160 )
+
+[node name="CoinArea2D2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 94, 160 )
+
+[node name="CoinArea2D3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 638, 32 )

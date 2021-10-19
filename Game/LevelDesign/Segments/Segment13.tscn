@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Game/LevelDesign/Tilemaps/DirtAutoTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Game/Enemies/Melee/MeleeEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Game/Enemies/RangedEnemy/RangedEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Game/Items/Coin.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 832, 32 )
@@ -27,4 +28,9 @@ shape = SubResource( 1 )
 
 [node name="RangedEnemy" parent="." instance=ExtResource( 3 )]
 position = Vector2( 542, 96 )
-dir = "left"
+
+[node name="CoinArea2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 158, 160 )
+
+[node name="CoinArea2D2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 478, 32 )

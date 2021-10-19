@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game/Items/Coin.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Coin/gold_1.png" type="Texture" id=2]
@@ -13,31 +13,26 @@ animations = [ {
 "speed": 9.0
 } ]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 radius = 43.3494
 
-[sub_resource type="CircleShape2D" id=4]
-radius = 55.1309
-
-[node name="CoinStaticBody2D" type="Area2D"]
+[node name="CoinArea2D" type="Area2D"]
 scale = Vector2( 0.4, 0.4 )
+collision_layer = 4
+collision_mask = 4
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 1, 1 )
 frames = SubResource( 1 )
 animation = "Coin"
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
-[node name="CoinStaticBody" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CoinStaticBody"]
-shape = SubResource( 4 )
-
-[connection signal="body_entered" from="." to="." method="_on_CoinStaticBody2D_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_CoinArea2D_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_CoinArea2D_body_entered"]

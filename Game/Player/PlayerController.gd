@@ -51,10 +51,6 @@ func _physics_process(delta):
 		$Camera2D.zoom.x += zoomStrength
 		$Camera2D.zoom.y += zoomStrength
 	
-	#if position.y > 160 && not is_on_floor():
-			#remove_child($Camera2D)
-			#$Camera2D.offset.y = -64
-	
 	# Checks if player is on floor, if he is and presses UP Arrow, he'll jump
 	# If player's not on floor, play fall animation	
 	if is_on_floor():
@@ -78,4 +74,3 @@ func _physics_process(delta):
 	
 	# Sets player's current movent/jump speed
 	motion = move_and_slide(motion, UP)
-	pass

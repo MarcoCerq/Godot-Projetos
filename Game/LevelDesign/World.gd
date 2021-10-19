@@ -6,6 +6,10 @@ export(String, FILE, "*.tscn") var world_scene
 export(String, FILE, "*.tscn") var reset_scene
 
 
+# Preloading coin for connceting signals to player
+var coinInstance = preload("res://Game/Items/Coin.tscn")
+
+
 # Defining chunk presets
 var segments = [
 	preload("res://Game/LevelDesign/Segments/Segment1.tscn"),
@@ -66,6 +70,8 @@ func spawn_instance(x, y):
 		$Areas.add_child(instance)
 		lastCreatedSegment = instance
 		currentSegmentPosition = instance.position.x
+		for child in instance.get_children():
+			child.connect("coinCollected", $Player, "_on_CoinArea2D_coinCollected")
 
 
 # Deletes old chunk
