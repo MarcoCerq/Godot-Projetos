@@ -1,8 +1,12 @@
 extends Node2D
 
+
+# Defining scenes to be assigned
 export(String, FILE, "*.tscn") var world_scene
 export(String, FILE, "*.tscn") var reset_scene
 
+
+# Defining chunk presets
 var segments = [
 	preload("res://Game/LevelDesign/Segments/Segment1.tscn"),
 	preload("res://Game/LevelDesign/Segments/Segment2.tscn"),
@@ -22,51 +26,38 @@ var segments = [
 	preload("res://Game/LevelDesign/Segments/Segment16.tscn"),
 ]
 
-var distanceBetweenSegments = 832
 
+# Defining variables
+var distanceBetweenSegments = 832
 var lastCreatedSegment
 var currentSegmentPosition = 0
-
 var hasCreatedNewSegment = true
 
-var speed = 200
 
-var points = 0
-
+# Created a random chunk when ready
 func _ready():
-	randomize()
 	spawn_instance(0, 0)
-	#currentSegmentPosition += distanceBetweenSegments
 
-#func _physics_process(delta):
-	#for area in $Areas.get_children():
-		#area.position.x -= speed * delta
-		#if area.position.x < -distanceBetweenSegments:
-			#spawn_instance(area.position.x + (distanceBetweenSegments * 2), 0)
-			#area.queue_free()
-		#if($Player/PlayerKinematicBody2D.position.x > lastCreatedSegment.position.x - 164):
-			#oldPosition += distanceBetweenSegments
-			#spawn_instance(area.position.x + (oldPosition + distanceBetweenSegments), 0)
-	#for area in $Areas.get_children():
-		#var distancetoplayer = area.position.distance_to($Player/PlayerKinematicBody2D.distance)
-			#if distancetoplayer > distanceBetweenSegments:
-				#area.queue_free
 
+# Main physics process, called every engine tick
 func _physics_process(delta):
+	#print (points)
 	
-	points += delta * 2
-	print (points)
+	menuEvent()
 	
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().change_scene(world_scene)
-	if Input.is_action_just_pressed("ui_reset"):
-		get_tree().change_scene(reset_scene)
+	generateNewChunk()
+
+
+# Function that Generates New Chunks of map when required circumstances are met
+func generateNewChunk():
 	for area in $Areas.get_children():
 		if $Player/PlayerKinematicBody2D.position.x >= positionToSpawn() && not hasCreatedNewSegment:
 			hasCreatedNewSegment = true
-			spawn_instance(area.position.x + currentSegmentPosition, 0)
+			spawn_instance(currentSegmentPosition + distanceBetweenSegments, 0)
 			delete_instance()
 
+
+# Generates new chunk
 func spawn_instance(x, y):
 	if hasCreatedNewSegment:
 		hasCreatedNewSegment = false
@@ -74,15 +65,35 @@ func spawn_instance(x, y):
 		instance.position = Vector2(x, y)
 		$Areas.add_child(instance)
 		lastCreatedSegment = instance
-		currentSegmentPosition += distanceBetweenSegments
-		
+		currentSegmentPosition = instance.position.x
+
+
+# Deletes old chunk
 func delete_instance():
 	for area in $Areas.get_children():
-		if area.position.x <= positionToDelete() && area.get_node("VisibilityNotifier2D").is_on_screen():
-			area.queue_free()
-	
+		if area.position.x < positionToDelete():
+			if area != lastCreatedSegment:
+				if area.position.x < $Player/PlayerKinematicBody2D.position.x:
+					area.queue_free()
+
+
+# Defines the position the next chunk must be generated in
 func positionToSpawn():
-	return currentSegmentPosition - distanceBetweenSegments - 100 + (distanceBetweenSegments / 2)
-	
+	var halfDistance = distanceBetweenSegments / 2
+	return currentSegmentPosition - halfDistance
+
+
+# Defines the position the chunk must be in to be deleted
 func positionToDelete():
-	return currentSegmentPosition - distanceBetweenSegments + 100 - (distanceBetweenSegments * 2)
+	var doubleDistance = distanceBetweenSegments * 2
+	return currentSegmentPosition - doubleDistance
+
+
+# Function that detects if the player is pressing "ui_cancel" (Esc) or 
+# "ui_reset" (R) keys to either quit the game or restart the game respectively
+func menuEvent():
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene(world_scene)
+		
+	if Input.is_action_just_pressed("ui_reset"):
+		get_tree().change_scene(reset_scene)

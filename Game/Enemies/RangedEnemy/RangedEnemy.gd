@@ -9,9 +9,11 @@ var timer = false
 
 func _ready():
 	if dir == "right":
-		self.rotation_degrees = 0
+		self.rotation_degrees = 90
+		$Sprite.rotation_degrees = -90
 	if dir == "left":
-		self.rotation_degrees = 180
+		self.rotation_degrees = -90
+		$Sprite.rotation_degrees = 90
 
 func _physics_process(delta):
 	if timer == false:
