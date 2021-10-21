@@ -8,7 +8,6 @@ var velocity = Vector2()
 
 var direction = 1
 
-
 func _physics_process(delta):
 	velocity.x = Speed * direction
 	velocity.y += Gravity
@@ -21,4 +20,3 @@ func _physics_process(delta):
 	if $RayCast2D.is_colliding() == false:
 		direction = direction * -1
 		$RayCast2D.position.x *= -1
-		 

@@ -20,11 +20,6 @@ height = 28.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 7 ) ],
-"loop": true,
-"name": "Idle",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Run",
@@ -38,6 +33,11 @@ animations = [ {
 "frames": [ ExtResource( 10 ) ],
 "loop": true,
 "name": "Fall",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
 "speed": 5.0
 } ]
 
@@ -115,7 +115,11 @@ margin_left = 7.0
 margin_top = 13.0
 margin_right = 74.0
 margin_bottom = 27.0
-text = "9999"
+text = "#######
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CoinPanel" type="Panel" parent="CanvasLayer"]
 anchor_left = 0.975
@@ -156,11 +160,11 @@ __meta__ = {
 
 [node name="Coins" type="Label" parent="CanvasLayer/CoinPanel"]
 modulate = Color( 1, 0.960784, 0, 1 )
-margin_left = 45.2967
-margin_top = 13.8274
-margin_right = 85.2967
-margin_bottom = 27.8274
-text = "1234"
+margin_left = 45.0
+margin_top = 14.0
+margin_right = 85.0
+margin_bottom = 28.0
+text = "####"
 __meta__ = {
 "_edit_use_anchors_": false
 }

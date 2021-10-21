@@ -18,14 +18,16 @@ func _physics_process(delta):
 	# Friction for acceleration/deseleration
 	var friction = false
 		
-	# If the player goes right, moves the character right and flips it's sprite right
+	# If the player goes right, moves the character right and 
+	# flips it's sprite right
 	if Input.is_action_pressed("ui_right"):
 		motion.x = min(motion.x + ACCELERATION, MAX_SPEED)
 		if $Camera2D.offset.x > 32:
 			$Camera2D.offset.x -= 300 * delta
 		$Sprite.flip_h = false
 		$Sprite.play("Run")
-	# Else if the player goes left, moves the character left and flips it's sprite left
+	# Else if the player goes left, moves the character left and 
+	# flips it's sprite left
 	elif Input.is_action_pressed("ui_left"):
 		#motion.x = max(motion.x - ACCELERATION, -MAX_SPEED)
 		if $Camera2D.offset.x < 301:
