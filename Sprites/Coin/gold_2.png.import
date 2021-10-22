@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gold_2.png-e249f87d55910354b74eedddc0b7682b.stex"
+path="res://.import/gold_2.png-5fae00d3fea65c22cec7b8f41894a58a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Sprites/Coin/gold_2.png"
-dest_files=[ "res://.import/gold_2.png-e249f87d55910354b74eedddc0b7682b.stex" ]
+source_file="res://Sprites/Coin/gold_2.png"
+dest_files=[ "res://.import/gold_2.png-5fae00d3fea65c22cec7b8f41894a58a.stex" ]
 
 [params]
 
