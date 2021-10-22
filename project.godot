@@ -37,10 +37,6 @@ window/stretch/aspect="expand"
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
 
-[global]
-
-debug=false
-
 [input]
 
 ui_left={
