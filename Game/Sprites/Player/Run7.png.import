@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gold_1.png-f7067228e570ccc739614d6fc2134075.stex"
+path="res://.import/Run7.png-20f7bf10b900bffd46283c5e3254b4c7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Coin/gold_1.png"
-dest_files=[ "res://.import/gold_1.png-f7067228e570ccc739614d6fc2134075.stex" ]
+source_file="res://Game/Sprites/Player/Run7.png"
+dest_files=[ "res://.import/Run7.png-20f7bf10b900bffd46283c5e3254b4c7.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/JungleDirtTileSet.png-8de719a6cd5d0d1cc3206639bc4da3df.stex"
+path="res://.import/Jump0.png-1541b811fec55dce60043820f5e2041d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Tiles/JungleDirtTileSet.png"
-dest_files=[ "res://.import/JungleDirtTileSet.png-8de719a6cd5d0d1cc3206639bc4da3df.stex" ]
+source_file="res://Game/Sprites/Player/Jump0.png"
+dest_files=[ "res://.import/Jump0.png-1541b811fec55dce60043820f5e2041d.stex" ]
 
 [params]
 
